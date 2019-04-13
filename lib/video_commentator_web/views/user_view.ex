@@ -7,5 +7,7 @@ defmodule VideoCommentatorWeb.UserView do
     name
     |> String.split(" ")
     |> Enum.at(0)
+    |> String.downcase()
+    |> String.capitalize()
   end
 end

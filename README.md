@@ -11,6 +11,8 @@ __TODO__
 * User commenting
 * Live comment replay
 
+Development updates will be periodically deployed to Heroku at [https://video-commentator-ba.herokuapp.com/](https://video-commentator-ba.herokuapp.com/).
+
 ## Running
 
 To start the Phoenix server:

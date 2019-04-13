@@ -1,4 +1,4 @@
-defmodule VideoCommentator.UserController do
+defmodule VideoCommentatorWeb.UserController do
   use VideoCommentatorWeb, :controller
 
   alias VideoCommentator.Accounts

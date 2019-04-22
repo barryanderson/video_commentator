@@ -23,6 +23,7 @@ defmodule VideoCommentatorWeb do
 
       import Plug.Conn
       import VideoCommentatorWeb.Gettext
+      import VideoCommentatorWeb.Auth, only: [authenticate_user: 2]
       alias VideoCommentatorWeb.Router.Helpers, as: Routes
     end
   end
@@ -50,6 +51,7 @@ defmodule VideoCommentatorWeb do
       use Phoenix.Router
       import Plug.Conn
       import Phoenix.Controller
+      import VideoCommentatorWeb.Auth, only: [authenticate_user: 2]
     end
   end
 

@@ -22,6 +22,7 @@ defmodule VideoCommentator.DataCase do
       import Ecto.Changeset
       import Ecto.Query
       import VideoCommentator.DataCase
+      import VideoCommentator.TestHelpers
     end
   end
 

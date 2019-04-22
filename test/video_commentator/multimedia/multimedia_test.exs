@@ -2,12 +2,17 @@ defmodule VideoCommentator.MultimediaTest do
   use VideoCommentator.DataCase
 
   alias VideoCommentator.Multimedia
+  alias VideoCommentator.Multimedia.Category
 
   describe "videos" do
     alias VideoCommentator.Multimedia.Video
 
     @valid_attrs %{description: "some description", title: "some title", url: "some url"}
-    @update_attrs %{description: "some updated description", title: "some updated title", url: "some updated url"}
+    @update_attrs %{
+      description: "some updated description",
+      title: "some updated title",
+      url: "some updated url"
+    }
     @invalid_attrs %{description: nil, title: nil, url: nil}
 
     def video_fixture(attrs \\ %{}) do
@@ -63,6 +68,19 @@ defmodule VideoCommentator.MultimediaTest do
     test "change_video/1 returns a video changeset" do
       video = video_fixture()
       assert %Ecto.Changeset{} = Multimedia.change_video(video)
+    end
+  end
+
+  describe "categories" do
+    test "list_alphabetical_categories/0" do
+      for name <- ~w(Drama Action Comedy), do: Multimedia.create_category(name)
+
+      alpha_names =
+        for %Category{name: name} <- Multimedia.list_alphabetical_categories() do
+          name
+        end
+
+      assert alpha_names == ~w(Action Comedy Drama)
     end
   end
 end

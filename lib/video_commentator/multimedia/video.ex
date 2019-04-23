@@ -11,6 +11,7 @@ defmodule VideoCommentator.Multimedia.Video do
 
     belongs_to :user, VideoCommentator.Accounts.User
     belongs_to :category, VideoCommentator.Multimedia.Category
+    has_many :annotations, VideoCommentator.Multimedia.Annotation
 
     timestamps()
   end

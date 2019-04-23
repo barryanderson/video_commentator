@@ -1,3 +1,4 @@
+<%= link "Add Video", to: Routes.video_path(@conn, :new), class: "button" %>
 <table>
   <thead>
     <tr>

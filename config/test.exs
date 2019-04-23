@@ -16,3 +16,5 @@ config :video_commentator, VideoCommentator.Repo,
   database: "video_commentator_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
+
+config :pbkdf2_elixir, :rounds, 1

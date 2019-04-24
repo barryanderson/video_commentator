@@ -1,30 +1,18 @@
-<h1>New User</h1>
-
-<%= form_for @changeset, Routes.user_path(@conn, :create), fn f -> %>
-  <%= if @changeset.action do %>
-    <div class="alert alert-danger">
-      <p>Oops, something went wrong! Please check the errors below.</p>
+<div class="row">
+  <div class="col">
+    <div class="card mx-auto" style="max-width: 30rem">
+      <div class="card-header">Register Account</div>
+      <div class="card-body">
+      <%= form_for @changeset, Routes.user_path(@conn, :create), fn f -> %>
+        <%= input f, :name %>
+        <%= input f, :username %>
+        <%= inputs_for f, :credential, fn cf -> %>
+          <%= input cf, :email %>
+          <%= input cf, :password %>
+        <% end %>
+        <%= submit "Create User" %>
+      <% end %>
+      </div>
     </div>
-  <% end %>
-  <div>
-    <%= text_input f, :name, placeholder: "Name" %>
-    <%= error_tag f, :name %>
   </div>
-  <div>
-    <%= text_input f, :username, placeholder: "Username" %>
-    <%= error_tag f, :username %>
-  </div>
-  <div>
-    <%= inputs_for f, :credential, fn cf -> %>
-      <div>
-        <%= text_input cf, :email, placeholder: "Email" %>
-        <%= error_tag cf, :email %>
-      </div>
-      <div>
-        <%= password_input cf, :password, placeholder: "Password" %>
-        <%= error_tag cf, :password %>
-      </div>
-    <% end %>
-  </div>
-  <%= submit "Create User" %>
-<% end %>
+</div>

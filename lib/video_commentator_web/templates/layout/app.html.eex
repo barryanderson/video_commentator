@@ -5,45 +5,77 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>VideoCommentator · Phoenix Framework</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
   </head>
   <body>
-    <header>
-      <section class="container">
-        <nav role="navigation">
-          <ul>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Video Commentator</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto">
             <%= if @current_user do %>
-              <li>
+              <li class="nav-item active">
                 <%=
-                  @current_user.username
-                  |> String.split(" ")
-                  |> Enum.at(0)
-                  |> String.downcase()
-                  |> String.capitalize()
+                  link "My Videos",
+                  to: Routes.video_path(@conn, :index),
+                  class: "nav-link"
                 %>
-              <li><%= link "My Videos", to: Routes.video_path(@conn, :index) %></li>
               </li>
-              <li>
-                <%= link "Log out",
-                to: Routes.session_path(@conn, :delete, @current_user),
-                method: "delete" %>
+              <li class="nav-item active">
+                <%=
+                  link "All Videos",
+                  to: Routes.video_path(@conn, :index),
+                  class: "nav-link"
+                %>
+              </li>
+              <li class="nav-item active">
+                <%=
+                  link "Log out",
+                  to: Routes.session_path(@conn, :delete, @current_user),
+                  method: "delete",
+                  class: "nav-link"
+                %>
               </li>
             <% else %>
-              <li><%= link "Register", to: Routes.user_path(@conn, :new) %></li>
-              <li><%= link "Log in", to: Routes.session_path(@conn, :new) %></li>
+              <li>
+                <%=
+                  link "Register",
+                  to: Routes.user_path(@conn, :new),
+                  class: "nav-link"
+                %>
+              </li>
+              <li>
+                <%=
+                  link "Log in",
+                  to: Routes.session_path(@conn, :new),
+                  class: "nav-link"
+                %>
+              </li>
             <% end %>
           </ul>
-        </nav>
-        <a href="http://phoenixframework.org/" class="phx-logo">
-        <img src="<%= Routes.static_url(@conn, "/images/phoenix.png") %>" alt="Phoenix Framework Logo"/>
-      </a>
-      </section>
-    </header>
+        </div>
+      </nav>
+
+    <div class="container mt-4">
+      <div class="row">
+        <div class="col">
+           <%= show_flash(@conn) %>
+        </div>
+      </div>
+      <%= render @view_module, @view_template, assigns %>
+    </div>
+
+<!--
     <main role="main" class="container">
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
       <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
       <%= render @view_module, @view_template, assigns %>
     </main>
+-->
+
     <script>window.userToken = "<%= assigns[:user_token] %>"</script>
     <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
   </body>

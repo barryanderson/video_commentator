@@ -42,6 +42,7 @@ defmodule VideoCommentatorWeb do
 
       import VideoCommentatorWeb.ErrorHelpers
       import VideoCommentatorWeb.Gettext
+      import VideoCommentatorWeb.InputHelpers
       alias VideoCommentatorWeb.Router.Helpers, as: Routes
     end
   end

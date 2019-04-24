@@ -6,10 +6,15 @@
 # Video Commentator
 
 __TODO__
-* User authenticaion
-* Video upload
-* User commenting
-* Live comment replay
+* ~~User authenticaion~~
+* ~~Video upload~~
+* ~~User commenting~~
+* ~~Live comment replay~~
+* ~~Tests~~
+* ~~Comment jump-to time~~
+* ~~Permalink slugs~~
+* Wolfram Alpha queries
+* UI design
 
 Development updates will be periodically deployed to Heroku at [https://video-commentator-ba.herokuapp.com/](https://video-commentator-ba.herokuapp.com/).
 

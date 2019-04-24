@@ -30,5 +30,6 @@ To start the Phoenix server:
 Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
 ## Notes
-[Using Bootstrap and SSAS in Phoenix](https://experimentingwithcode.com/using-bootstrap-and-sass-in-phoenix/)
-[Dynamic Forms with Bootstrap](http://blog.plataformatec.com.br/2016/09/dynamic-forms-with-phoenix/)
+
+* [Using Bootstrap and SSAS in Phoenix](https://experimentingwithcode.com/using-bootstrap-and-sass-in-phoenix/)
+* [Dynamic Forms with Bootstrap](http://blog.plataformatec.com.br/2016/09/dynamic-forms-with-phoenix/)

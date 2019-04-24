@@ -17,7 +17,9 @@ defmodule VideoCommentatorWeb.InputHelpers do
   end
 
   defp state_class(form, field) do
-    IO.inspect(form)
+    IO.inspect(form.source)
+
+    # Ecto.Changeset / Plug.conn
 
     cond do
       # The form was not yet submitted

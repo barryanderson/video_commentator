@@ -4,6 +4,7 @@
       <div class="card-header">Login</div>
       <div class="card-body">
         <%= form_for @conn, Routes.session_path(@conn, :create), [as: :session], fn f -> %>
+          <%= input f, :email %>
           <div class="form-group">
             <label for="email">Email Address</label>
             <%= text_input f, :email, placeholder: "Email", id: "email", class: "form-control" %>

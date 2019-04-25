@@ -1,4 +1,25 @@
-<section class="phx-hero">
-  <h1><%= gettext "Welcome to %{name}!", name: "Video Commentator" %></h1>
-  <p>Comment and share.</p>
-</section>
+<div class="jumbotron">
+  <h1 class="display-4">Video Commentator</h1>
+  <p class="lead">Share and discuss your favorite YouTube videos.</p>
+  <hr class="my-4">
+  <%= if @current_user do %>
+    <p>Welcome back <%= @current_user.name %>!</p>
+    <%=
+      link "View videos",
+      to: Routes.video_path(@conn, :index),
+      class: "btn btn-primary btn-lg"
+    %>
+  <%= else %>
+    <p>Welcome!</p>
+    <%=
+      link "Register",
+      to: Routes.user_path(@conn, :new),
+      class: "btn btn-primary"
+    %>
+    <%=
+      link "Log in",
+      to: Routes.session_path(@conn, :new),
+      class: "btn btn-primary"
+    %>
+  <%= end %>
+</div>

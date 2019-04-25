@@ -1,2 +1,14 @@
-<h1>Showing User</h1>
-<%= render "user.html", user: @user %>
+<div class="row">
+  <div class="col">
+    <h1><%= @user.name %></h1>
+    <div>ID: <%= @user.id %></div>
+    <div>Username: <%= @user.username %></div>
+    <div>
+      <%=
+        link "Users",
+        to: Routes.user_path(@conn, :index),
+        class: "btn btn-primary"
+      %>
+    </div>
+  </div>
+</div>

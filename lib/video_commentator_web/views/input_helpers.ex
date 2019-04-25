@@ -17,17 +17,19 @@ defmodule VideoCommentatorWeb.InputHelpers do
   end
 
   defp state_class(form, field) do
-    IO.inspect(form.source)
+    state_class(form.source, form.errors, field)
+  end
 
-    # Ecto.Changeset / Plug.conn
-
+  defp state_class(%Ecto.Changeset{} = source, errors, field) do
     cond do
       # The form was not yet submitted
-      !form.source.action -> ""
-      form.errors[field] -> "is-invalid"
+      !source.action -> ""
+      errors[field] -> "is-invalid"
       true -> "is-valid"
     end
   end
+
+  defp state_class(%Plug.Conn{} = _source, _errors, _field), do: ""
 
   # Implement clauses below for custom inputs.
   # defp input(:datepicker, form, field, input_opts) do

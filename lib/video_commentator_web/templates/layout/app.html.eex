@@ -10,7 +10,11 @@
   </head>
   <body>
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Video Commentator</a>
+        <%=
+          link "Video Commentator",
+          to: Routes.page_path(@conn, :index),
+          class: "navbar-brand"
+        %>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -27,7 +31,14 @@
               <li class="nav-item active">
                 <%=
                   link "All Videos",
-                  to: Routes.video_path(@conn, :index),
+                  to: Routes.page_path(@conn, :index),
+                  class: "nav-link"
+                %>
+              </li>
+              <li class="nav-item active">
+                <%=
+                  link "Users",
+                  to: Routes.user_path(@conn, :index),
                   class: "nav-link"
                 %>
               </li>
@@ -67,14 +78,6 @@
       </div>
       <%= render @view_module, @view_template, assigns %>
     </div>
-
-<!--
-    <main role="main" class="container">
-      <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
-      <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
-      <%= render @view_module, @view_template, assigns %>
-    </main>
--->
 
     <script>window.userToken = "<%= assigns[:user_token] %>"</script>
     <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>

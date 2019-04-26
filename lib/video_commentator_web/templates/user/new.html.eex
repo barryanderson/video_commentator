@@ -10,7 +10,10 @@
           <%= input cf, :email %>
           <%= input cf, :password %>
         <% end %>
-        <%= submit "Create User", class: "btn btn-primary" %>
+        <%=
+          submit "Create User",
+          class: "btn btn-primary"
+        %>
       <% end %>
       </div>
     </div>

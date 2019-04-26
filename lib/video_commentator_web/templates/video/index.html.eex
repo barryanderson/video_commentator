@@ -1,25 +1,53 @@
-<%= link "Add Video", to: Routes.video_path(@conn, :new), class: "button" %>
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <%= for video <- @videos do %>
-      <tr>
-        <td><%= video.title %></td>
-        <td><%= link "Edit", to: Routes.video_path(@conn, :edit, video) %></td>
-        <td>
-          <%= link "Delete", to: Routes.video_path(@conn, :delete, video), method: :delete, data: [confirm: "Are you sure?"] %>
-        </td>
-        <td>
-          <%= link "Watch", to: Routes.watch_path(@conn, :show, video), class: "button" %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="row">
+  <div class="col">
+    <%=
+      link "Add Video",
+      to: Routes.video_path(@conn, :new),
+      class: "btn btn-primary"
+    %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <table class="table table-hover">
+      <caption>List of yout videos</caption>
+      <thead>
+        <tr>
+          <td>Title</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </thead>
+      <tbody>
+        <%= for video <- @videos do %>
+          <tr>
+            <td><%= video.title %></td>
+            <td>
+              <%=
+                link "Edit",
+                to: Routes.video_path(@conn, :edit, video),
+                class: "btn btn-primary"
+              %>
+            </td>
+            <td>
+              <%=
+                link "Delete",
+                to: Routes.video_path(@conn, :delete, video),
+                method: :delete,
+                data: [confirm: "Are you sure?"],
+                class: "btn btn-primary"
+              %>
+            </td>
+            <td>
+              <%=
+                link "Watch", to: Routes.watch_path(@conn, :show, video),
+                class: "btn btn-primary" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

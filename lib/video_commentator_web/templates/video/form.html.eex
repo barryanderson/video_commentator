@@ -5,22 +5,23 @@
     </div>
   <% end %>
 
-  <%= label f, :url %>
-  <%= text_input f, :url %>
-  <%= error_tag f, :url %>
+  <%= input f, :url, [using: :text_input] %>
+  <%= input f, :title %>
+  <%= input f, :description, [using: :textarea] %>
+  <%= input :select, f, :category_id, [using: :select, prompt: "Choose a category"] %>
 
-  <%= label f, :title %>
-  <%= text_input f, :title %>
-  <%= error_tag f, :title %>
-
-  <%= label f, :description %>
-  <%= textarea f, :description %>
-  <%= error_tag f, :description %>
-
-  <%= label f, :category_id, "Category"%>
+  <%= label f, :category_id, category_select_options(@categories) %>
   <%= select f, :category_id, category_select_options(@categories), prompt: "Choose a category" %>
 
   <div>
-    <%= submit "Save" %>
+    <%=
+      submit "Save",
+      class: "btn btn-primary"
+    %>
+    <%=
+      link "Back",
+      to: Routes.video_path(@conn, :index),
+      class: "btn btn-primary"
+    %>
   </div>
 <% end %>

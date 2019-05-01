@@ -3,6 +3,6 @@ defmodule VideoCommentatorWeb.PageControllerTest do
 
   test "GET /", %{conn: conn} do
     conn = get(conn, "/")
-    assert html_response(conn, 200) =~ "Welcome to Video Commentator!"
+    assert html_response(conn, 200) =~ "Video Commentator"
   end
 end

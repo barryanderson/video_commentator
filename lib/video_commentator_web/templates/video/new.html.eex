@@ -7,11 +7,6 @@
           render "form.html",
           Map.put(assigns, :action, Routes.video_path(@conn, :create))
         %>
-        <%=
-          link "Back",
-          to: Routes.video_path(@conn, :index),
-          class: "btn btn-primary"
-        %>
       </div>
     </div>
   </div>

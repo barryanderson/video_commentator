@@ -16,6 +16,15 @@ defmodule VideoCommentatorWeb.InputHelpers do
     end
   end
 
+  # Expand for custom inputs such as select.
+  # defp input(:datepicker, form, field, input_opts) do
+  #   raise "not yet implemented"
+  # end
+  def input(:select, form, field, input_opts) do
+    apply(Phoenix.HTML.Form, :text_input, [form, field, input_opts])
+    # apply(Phoenix.HTML.Form, type, [form, field, input_opts])
+  end
+
   defp state_class(form, field) do
     state_class(form.source, form.errors, field)
   end
@@ -30,12 +39,4 @@ defmodule VideoCommentatorWeb.InputHelpers do
   end
 
   defp state_class(%Plug.Conn{} = _source, _errors, _field), do: ""
-
-  # Implement clauses below for custom inputs.
-  # defp input(:datepicker, form, field, input_opts) do
-  #   raise "not yet implemented"
-  # end
-  defp input(type, form, field, input_opts) do
-    apply(Phoenix.HTML.Form, type, [form, field, input_opts])
-  end
 end

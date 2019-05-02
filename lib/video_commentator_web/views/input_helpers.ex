@@ -20,8 +20,19 @@ defmodule VideoCommentatorWeb.InputHelpers do
   # defp input(:datepicker, form, field, input_opts) do
   #   raise "not yet implemented"
   # end
-  def input(:select, form, field, input_opts) do
-    apply(Phoenix.HTML.Form, :text_input, [form, field, input_opts])
+  def input(:select, form, field, input_opts, opts \\ []) do
+    wrapper_opts = [class: "form-group"]
+    label_opts = [class: "control-label"]
+    inputfield_opts = Enum.concat([class: "form-control #{state_class(form, field)}"], opts)
+
+    content_tag :div, wrapper_opts do
+      label = label(form, field, humanize(field), label_opts)
+      input = apply(Phoenix.HTML.Form, :select, [form, field, input_opts, inputfield_opts])
+      error = VideoCommentatorWeb.ErrorHelpers.error_tag(form, field)
+      [label, input, error || ""]
+    end
+
+    # apply(Phoenix.HTML.Form, :select, [form, field, input_opts, opts])
     # apply(Phoenix.HTML.Form, type, [form, field, input_opts])
   end
 

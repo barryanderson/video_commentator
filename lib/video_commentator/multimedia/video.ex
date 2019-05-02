@@ -20,7 +20,7 @@ defmodule VideoCommentator.Multimedia.Video do
   def changeset(video, attrs) do
     video
     |> cast(attrs, [:url, :title, :description, :category_id])
-    |> validate_required([:url, :title, :description])
+    |> validate_required([:url, :title, :description, :category_id])
     |> assoc_constraint(:category)
     |> slugify_title()
   end

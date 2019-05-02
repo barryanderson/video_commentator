@@ -1,19 +1,24 @@
 <div class="row">
-
-  <div class="column column-60">
+  <div class="col">
     <h1><%= @video.title %></h1>
-    <%= content_tag :div, id: "video", data: [id: @video.id, player_id: player_id(@video)] do %>
+
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <%=
+      content_tag :div,
+      id: "video",
+      data: [id: @video.id, player_id: player_id(@video)]
+    do %>
     <% end %>
   </div>
-
-  <div class="column annotations">
-    <h3>Annotations</h3>
+  <div class="col">
     <div id="msg-container"></div>
-    <div>
-      <textarea id="msg-input" rows="3" placeholder="Comment..."></textarea>
-      <button id="msg-submit" class="button column" type="submit">
-        Post
-      </button>
+    <div class="form-group">
+      <textarea id="msg-input" rows="3" placeholder="Comment..." class="form-control"></textarea>
     </div>
+    <button id="msg-submit" class="btn btn-primary" type="submit">Add Comment</button>
   </div>
 </div>

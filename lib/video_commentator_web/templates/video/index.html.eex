@@ -9,31 +9,33 @@
 </div>
 
 <div class="row">
-  <div class="card-group">
-    <%= for video <- @videos do %>
-        <div class="card mb-3 ml-3 mr-3" style="min-width: 350px; max-width: 350px;">
-          <img src="https://via.placeholder.com/350x250" alt="video thumbnail">
-          <div class="card-body">
-            <h5 class="card-title"><%= video.title %></h5>
-            <p class="card-text"><%= video.description %></p>
-              <%=
-                link "Watch", to: Routes.watch_path(@conn, :show, video),
-                class: "btn btn-primary"
-              %>
-              <%=
-                link "Edit",
-                to: Routes.video_path(@conn, :edit, video),
-                class: "btn btn-primary"
-              %>
-              <%=
-                link "Delete",
-                to: Routes.video_path(@conn, :delete, video),
-                method: :delete,
-                data: [confirm: "Are you sure?"],
-                class: "btn btn-primary"
-              %>
+  <%= for video <- @videos do %>
+    <div class="col-sm-12 col-md-6 col-lg-4 card-group">
+      <div class="card mb-3 ml-3 mr-3">
+        <img src="https://via.placeholder.com/350x250" alt="video thumbnail">
+        <div class="card-body">
+          <h5 class="card-title"><%= video.title %></h5>
+          <p class="card-text"><%= video.description %></p>
+          <div class="align-text-bottom">
+            <%=
+              link "Watch", to: Routes.watch_path(@conn, :show, video),
+              class: "btn btn-primary"
+            %>
+            <%=
+              link "Edit",
+              to: Routes.video_path(@conn, :edit, video),
+              class: "btn btn-primary"
+            %>
+            <%=
+              link "Delete",
+              to: Routes.video_path(@conn, :delete, video),
+              method: :delete,
+              data: [confirm: "Are you sure?"],
+              class: "btn btn-primary"
+            %>
+          </div>
         </div>
       </div>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
 </div>

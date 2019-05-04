@@ -27,6 +27,7 @@ defmodule VideoCommentatorWeb.VideoControllerTest do
 
     defp video_count, do: Enum.count(Multimedia.list_videos())
 
+    # WHY IS THE BROKEN?
     # @tag login_as: "max"
     # test "creates user video and redirects", %{conn: conn, user: user} do
     #   create_conn = post conn, Routes.video_path(conn, :create), video: @create_attrs
